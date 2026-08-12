@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ResumeForge — a free, privacy-first resume builder with live preview and PDF export." />
+  <title>ResumeForge — Free Resume Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="ResumeForge home"><span class="brand-mark">R</span><span>ResumeForge</span></a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#builder">Builder</a><a href="#features">Features</a><a href="#templates">Templates</a><a href="#about">About</a>
+      </nav>
+      <div class="top-actions"><button class="ghost-btn" id="loadDemo">Load demo</button><button class="primary-btn" id="downloadTop">Download PDF</button></div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">FREE • OPEN SOURCE • PRIVATE BY DEFAULT</div>
+          <h1>Build a resume<br><em>that gets noticed.</em></h1>
+          <p>Craft a polished, ATS-friendly resume in minutes. Enter your details, see the result live, choose a style, and download a print-ready PDF.</p>
+          <div class="hero-actions"><a class="primary-btn large" href="#builder">Start building <span>→</span></a><button class="text-btn" id="heroDemo">See a demo resume</button></div>
+          <div class="trust-row"><span>✓ No account required</span><span>✓ Data stays in your browser</span><span>✓ Unlimited downloads</span></div>
+        </div>
+        <div class="hero-card" aria-label="Resume preview sample"><div class="mini-paper"><div class="mini-name">ALEX MORGAN</div><div class="mini-role">PRODUCT DESIGNER</div><div class="mini-rule"></div><div class="mini-grid"><div><b>EXPERIENCE</b><i></i><i></i><i></i><b>EDUCATION</b><i></i></div><div><b>PROFILE</b><i></i><i></i><b>SKILLS</b><i></i><i></i></div></div></div><div class="floating-badge">✦ ATS-ready</div></div>
+      </section>
+
+      <section id="features" class="feature-strip"><div><strong>Live preview</strong><span>See every change instantly</span></div><div><strong>Smart sections</strong><span>Add only what you need</span></div><div><strong>PDF export</strong><span>Print-ready in one click</span></div><div><strong>Privacy first</strong><span>No server required</span></div></section>
+
+      <section id="builder" class="builder-section">
+        <div class="section-heading"><div><div class="eyebrow">THE BUILDER</div><h2>Your resume, your way.</h2></div><div class="save-status" id="saveStatus">● Saved locally</div></div>
+        <div class="builder-layout">
+          <aside class="editor-panel">
+            <div class="panel-tabs"><button class="tab active" data-tab="content">Content</button><button class="tab" data-tab="design">Design</button></div>
+            <div id="contentTab" class="tab-content">
+              <div class="form-section"><div class="section-title"><span>01</span><div><b>Personal information</b><small>Make it easy to reach you</small></div></div>
+                <label>Full name<input id="name" placeholder="Alex Morgan"></label><label>Professional title<input id="title" placeholder="Product Designer"></label><div class="two-col"><label>Email<input id="email" type="email" placeholder="alex@email.com"></label><label>Phone<input id="phone" placeholder="+1 555 123 4567"></label></div><div class="two-col"><label>Location<input id="location" placeholder="Toronto, Canada"></label><label>Website<input id="website" placeholder="alexmorgan.com"></label></div>
+              </div>
+              <div class="form-section"><div class="section-title"><span>02</span><div><b>Professional summary</b><small>A concise snapshot of your value</small></div></div><textarea id="summary" rows="5" placeholder="Product designer with 6+ years of experience creating accessible digital experiences..."></textarea></div>
+              <div class="form-section"><div class="section-title"><span>03</span><div><b>Experience</b><small>Show impact, not just responsibilities</small></div><button class="add-btn" data-add="experience">+ Add</button></div><div id="experienceFields"></div></div>
+              <div class="form-section"><div class="section-title"><span>04</span><div><b>Education</b><small>Your academic background</small></div><button class="add-btn" data-add="education">+ Add</button></div><div id="educationFields"></div></div>
+              <div class="form-section"><div class="section-title"><span>05</span><div><b>Skills</b><small>Separate skills with commas</small></div></div><label>Skills<textarea id="skills" rows="3" placeholder="Figma, UX Research, Prototyping, Design Systems, HTML, CSS"></textarea></label></div>
+              <div class="form-section"><div class="section-title"><span>06</span><div><b>Certifications</b><small>Credentials and courses</small></div><button class="add-btn" data-add="certification">+ Add</button></div><div id="certificationFields"></div></div>
+              <div class="form-section"><div class="section-title"><span>07</span><div><b>Projects</b><small>Optional — show your best work</small></div><button class="add-btn" data-add="project">+ Add</button></div><div id="projectFields"></div></div>
+              <div class="form-section"><div class="section-title"><span>08</span><div><b>Languages</b><small>Optional</small></div></div><label>Languages<textarea id="languages" rows="2" placeholder="English — Native, French — Intermediate"></textarea></label></div>
+              <button class="danger-link" id="clearAll">Clear all data</button>
+            </div>
+            <div id="designTab" class="tab-content hidden">
+              <div class="design-block"><b>Template</b><div class="template-grid"><button class="template-card active" data-template="classic"><span class="sample classic-sample"></span><small>Classic</small></button><button class="template-card" data-template="modern"><span class="sample modern-sample"></span><small>Modern</small></button><button class="template-card" data-template="minimal"><span class="sample minimal-sample"></span><small>Minimal</small></button></div></div>
+              <div class="design-block"><b>Accent color</b><div class="swatches"><button class="swatch active" data-color="#5b4bff" style="--swatch:#5b4bff"></button><button class="swatch" data-color="#0f766e" style="--swatch:#0f766e"></button><button class="swatch" data-color="#b45309" style="--swatch:#b45309"></button><button class="swatch" data-color="#be123c" style="--swatch:#be123c"></button><button class="swatch" data-color="#334155" style="--swatch:#334155"></button></div></div>
+              <div class="design-block"><b>Font size</b><input id="fontSize" type="range" min="9" max="12" value="10" step="0.5"><div class="range-labels"><span>Compact</span><span>Comfortable</span></div></div>
+              <div class="tip-box">💡 <b>ATS tip:</b> Keep section headings clear and avoid putting critical information inside images or graphics.</div>
+            </div>
+          </aside>
+
+          <section class="preview-panel"><div class="preview-toolbar"><span>Live preview</span><div><button class="icon-btn" id="zoomOut" aria-label="Zoom out">−</button><span id="zoomValue">100%</span><button class="icon-btn" id="zoomIn" aria-label="Zoom in">+</button><button class="icon-btn" id="printBtn" aria-label="Print resume">⤓</button></div></div><div class="paper-wrap" id="paperWrap"><article id="resumePaper" class="resume-paper classic"></article></div></section>
+        </div>
+      </section>
+
+      <section id="templates" class="templates-section"><div class="eyebrow">DESIGNED FOR REAL JOBS</div><h2>Professional templates,<br>without the fuss.</h2><p>Each template is clean, readable and designed to work well with applicant tracking systems.</p><div class="template-showcase"><div class="showcase-card"><div class="showcase-paper classic"></div><b>Classic</b><span>Traditional & dependable</span></div><div class="showcase-card"><div class="showcase-paper modern"></div><b>Modern</b><span>Bold & contemporary</span></div><div class="showcase-card"><div class="showcase-paper minimal"></div><b>Minimal</b><span>Clean & editorial</span></div></div></section>
+      <section id="about" class="about-section"><div><div class="eyebrow">WHY RESUMEFORGE?</div><h2>Simple enough for anyone.<br>Powerful enough to matter.</h2></div><div class="about-copy"><p>ResumeForge is built around one idea: creating a great resume shouldn't require a subscription, an account, or a design degree.</p><p>Your resume data is stored in your browser using local storage. Nothing needs to leave your device to create or download a resume.</p><div class="about-pills"><span>Open source</span><span>Privacy-first</span><span>Free forever</span></div></div></section>
+    </main>
+    <footer><div class="brand"><span class="brand-mark">R</span><span>ResumeForge</span></div><span>Built for job seekers everywhere.</span><a href="#top">Back to top ↑</a></footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
