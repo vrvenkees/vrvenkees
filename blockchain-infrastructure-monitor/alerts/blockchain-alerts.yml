@@ -1,0 +1,20 @@
+groups:
+  - name: blockchain-infrastructure
+    rules:
+      - alert: BlockchainRPCEndpointDown
+        expr: blockchain_up == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: Blockchain RPC endpoint is unavailable
+          description: The configured RPC endpoint has failed health checks for more than two minutes.
+
+      - alert: BlockchainRPCSlow
+        expr: blockchain_rpc_latency_seconds > 2
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: Blockchain RPC latency is high
+          description: RPC latency has remained above two seconds for five minutes.
